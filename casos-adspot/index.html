@@ -713,7 +713,7 @@ footer .wrap{align-items:center}
 <footer><div class="wrap"><img src="brand/adspot-icono.png" alt="" width="150" height="125" style="height:22px;width:auto"><span>AdSpot · DSP programático · DOOH, audio, rich media, CTV</span><span>Casos 2026</span></div></footer>
 <script>
 (function(){
-  function miss(el){var p=el.closest('.df-stage,.dove-video,.phone-h,.phone-v,.led')||el.parentNode;if(el.tagName==='VIDEO'||el.closest('.dove-video'))(el.parentNode).classList.add('missing');else el.style.visibility='hidden'}
+  function miss(el){if(el.tagName==='VIDEO'&&el.getAttribute('poster')){var im=document.createElement('img');im.src=el.getAttribute('poster');im.alt='';im.className=el.className;im.style.cssText='width:100%;height:100%;object-fit:cover;display:block';el.replaceWith(im);return}var p=el.closest('.df-stage,.dove-video,.phone-h,.phone-v,.led')||el.parentNode;if(el.tagName==='VIDEO'||el.closest('.dove-video'))(el.parentNode).classList.add('missing');else el.style.visibility='hidden'}
   document.querySelectorAll('video').forEach(function(v){v.addEventListener('error',function(){miss(v)});if(v.error)miss(v)});
   document.querySelectorAll('.case img').forEach(function(i){i.addEventListener('error',function(){miss(i)});if(i.complete&&i.naturalWidth===0&&i.getAttribute('src'))miss(i)});
 })();
